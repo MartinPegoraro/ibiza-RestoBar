@@ -19,7 +19,15 @@ async function getAll() {
     const getAll = await ProductsModel.find({ isDeleted: false })
     return getAll
 }
+
+async function getOne(id){
+    const getOne = await ProductsModel.findOne({_id: id, isDeleted:false})
+    console.log(getOne);
+    return returnData(getOne)
+}
+
 module.exports = {
     add,
-    getAll
+    getAll,
+    getOne,
 }

@@ -26,7 +26,17 @@ router.get("/", function (req, res) {
         })
 })
 
-router
+router.get("/:id", function(req, res) {
+    controller.getOne(req.params.id)
+    .then((data) => {
+        res.status(200).json({
+            error: false,
+            body: data,
+            status: 200,
+            message: 'Producto'
+        })
+    })
+})
 
 
 module.exports = router
