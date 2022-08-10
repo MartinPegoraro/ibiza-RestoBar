@@ -1,21 +1,22 @@
 const express = require('express');
 const app = express()
-const config = require('./config')
+const config = require('../config')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const router = require('./network/routes')
+require('dotenv').config()
 
-var url = 'mongodb://localhost:27017/IbizaRestoBar'
+var url = `${process.env.MONGO_URI}`
 mongoose.Promise = global.Promise
 
-// const db = require('./db')
+// const db = require('../db')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 router(app)
 
+
 const start = async () => {
-    // await db()
     mongoose.connect(url, { useNewUrlparser: true }).then(
         () => {
             console.log('Conexion a la BD exitosa');

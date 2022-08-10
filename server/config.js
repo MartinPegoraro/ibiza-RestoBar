@@ -9,6 +9,10 @@ const config = {
     server: {
         host: process.env.SERVER_HOST,
         port: process.env.SERVER_PORT,
+    },
+    serverPublic: {
+        host: process.env.PUBLICPAGE_SERVER_HOST,
+        port: process.env.PUBLICPAGE_SERVER_PORT
     }
 }
 
